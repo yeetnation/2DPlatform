@@ -100,18 +100,24 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySoundAtPoint(GameObject gObject, string _name)
     {
+        gObject.AddComponent<AudioSource>();
         for (int i = 0; i < sounds.Length; i++)
         {
             if (sounds[i].name == _name)
             {
-                AudioSource.PlayClipAtPoint(sounds[i].clip, gObject.transform.position);
+                gObject.GetComponent<AudioSource>().clip = sounds[i].clip;
+                gObject.GetComponent<AudioSource>().spatialBlend = 1;
+                gObject.GetComponent<AudioSource>().outputAudioMixerGroup = audioMixer.FindMatchingGroups(sounds[i].mixerGroup)[0];
+                PlayClipAtPointCustom(gObject.GetComponent<AudioSource>(), gObject.transform.position);
+                Destroy(gObject.GetComponent<AudioSource>());
                 return;
-            } 
+            }
         }
 
         //no Sound with name
         Debug.LogWarning("SoundManager: Sounds not found in list: " + _name);
     }
+
 
     public void ChangeVolume(float _volume)
     {
@@ -133,4 +139,37 @@ public class SoundManager : MonoBehaviour
         PlaySound(_name);
         return;
     }
+
+    private static AudioSource PlayClipAtPointCustom(AudioSource audioSource, Vector3 pos)
+    {
+        GameObject tempGO = new GameObject("TempAudio"); // create the temp object
+        tempGO.transform.position = pos; // set its position
+        AudioSource tempASource = tempGO.AddComponent<AudioSource>(); // add an audio source
+        tempASource.clip = audioSource.clip;
+        tempASource.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+        tempASource.mute = audioSource.mute;
+        tempASource.bypassEffects = audioSource.bypassEffects;
+        tempASource.bypassListenerEffects = audioSource.bypassListenerEffects;
+        tempASource.bypassReverbZones = audioSource.bypassReverbZones;
+        tempASource.playOnAwake = audioSource.playOnAwake;
+        tempASource.loop = audioSource.loop;
+        tempASource.priority = audioSource.priority;
+        tempASource.volume = audioSource.volume;
+        tempASource.pitch = audioSource.pitch;
+        tempASource.panStereo = audioSource.panStereo;
+        tempASource.spatialBlend = audioSource.spatialBlend;
+        tempASource.reverbZoneMix = audioSource.reverbZoneMix;
+        tempASource.dopplerLevel = audioSource.dopplerLevel;
+        tempASource.rolloffMode = audioSource.rolloffMode;
+        tempASource.minDistance = audioSource.minDistance;
+        tempASource.spread = audioSource.spread;
+        tempASource.maxDistance = audioSource.maxDistance;
+        // set other aSource properties here, if desired
+        tempASource.Play(); // start the sound
+        MonoBehaviour.Destroy(tempGO, tempASource.clip.length); // destroy object after clip duration (this will not account for whether it is set to loop)
+        return tempASource; // return the AudioSource reference
+    }
+
 }
+
+

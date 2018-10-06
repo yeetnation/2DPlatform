@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
         soundManager = SoundManager.instance;
         if (soundManager == null)
             Debug.LogError("No SoundManager found");
+
     }
     //outdated GamePause... solved with timescale = 0.0f during pause
     void OnPauseGameToggle(bool active)
@@ -82,7 +83,7 @@ public class Enemy : MonoBehaviour
         {
             GameMaster.KillEnemy(this);
             GameMaster.Money += stats.moneyWorth;
-            soundManager.PlaySound("EnemyDeathSound");
+            soundManager.PlaySoundAtPoint(this.gameObject, "EnemyDeathSound");
         }
         if (statusIndicator != null)
         {

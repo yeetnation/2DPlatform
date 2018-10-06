@@ -39,6 +39,7 @@ public class Sound
         source.Play();
     }
 
+
     public void Stop()
     {
         source.Stop();
@@ -91,6 +92,21 @@ public class SoundManager : MonoBehaviour
                 sounds[i].Play();
                 return;
             }
+        }
+
+        //no Sound with name
+        Debug.LogWarning("SoundManager: Sounds not found in list: " + _name);
+    }
+
+    public void PlaySoundAtPoint(GameObject gObject, string _name)
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].name == _name)
+            {
+                AudioSource.PlayClipAtPoint(sounds[i].clip, gObject.transform.position);
+                return;
+            } 
         }
 
         //no Sound with name

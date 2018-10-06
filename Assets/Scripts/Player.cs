@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         // handle what happens when the upgrade menu is toggled
         if (this == null)
             return;
-        keysEnabled = !active;
+        /*keysEnabled = !active;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         GetComponent<Platformer2DUserControl>().enabled = !active;
         if (active == true)
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.FreezeRotation;
             rb.velocity = previousForce;
             InvokeRepeating("RegenHealth", 1f, 0.5f);
-        }
+        }*/
         Weapon _weapon = GetComponentInChildren<Weapon>();
         ArmRotation _armRotation = GetComponentInChildren<ArmRotation>();
         if (_weapon != null)

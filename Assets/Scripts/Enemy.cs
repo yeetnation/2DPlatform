@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("No Deathparticles on Enemy");
         }
-        //GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
+        GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
         soundManager = SoundManager.instance;
         if (soundManager == null)
             Debug.LogError("No SoundManager found");
@@ -100,6 +100,6 @@ public class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        //GameMaster.gm.onTogglePauseGame -= OnPauseGameToggle;
+        GameMaster.gm.onTogglePauseGame -= OnPauseGameToggle;
     }
 }

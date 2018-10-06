@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         {
             statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
         }
-        //GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
+        GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
         soundManager = SoundManager.instance;
         if (soundManager == null)
             Debug.LogError("No SoundManager found");
@@ -138,6 +138,6 @@ public class Player : MonoBehaviour
     }
     private void OnDestroy()
     {
-        //GameMaster.gm.onTogglePauseGame -= OnPauseGameToggle;
+        GameMaster.gm.onTogglePauseGame -= OnPauseGameToggle;
     }
 }

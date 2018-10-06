@@ -54,20 +54,15 @@ public class GameMaster : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
-                ToggleUpgradeMenu();
+                upgradeMenu.SetActive(!upgradeMenu.activeSelf);
+                GamePause(upgradeMenu.activeSelf);
             }
         }
     }
-    private void ToggleUpgradeMenu()
+    private void GamePause(bool pauseStatus)
     {
-        upgradeMenu.SetActive(!upgradeMenu.activeSelf);
-        GamePause(upgradeMenu.activeSelf);
-    }
-
-    private void GamePause(bool pause)
-    {
-        onTogglePauseGame.Invoke(pause);
-        if (pause)
+        onTogglePauseGame.Invoke(pauseStatus);
+        if (pauseStatus)
             Time.timeScale = 0.0F;
         else
             Time.timeScale = 1.0f;

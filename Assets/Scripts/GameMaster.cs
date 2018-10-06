@@ -27,10 +27,12 @@ public class GameMaster : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject upgradeMenu;
+    [SerializeField] private GameObject reallyQuitMenu;
     public delegate void PauseGame(bool active);
     public PauseGame onTogglePauseGame;
     private SoundManager soundManager;
 
+    private bool disableUpgradeMenu = false;
     private bool keysEnabled = true;
 
     [SerializeField] private int startingMoney;
@@ -50,16 +52,38 @@ public class GameMaster : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            noQuit();
+        }
         if (keysEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.U) && !disableUpgradeMenu)
             {
                 upgradeMenu.SetActive(!upgradeMenu.activeSelf);
                 GamePause(upgradeMenu.activeSelf);
             }
         }
     }
-    private void GamePause(bool pauseStatus)
+
+    public void noQuit()
+    {
+        if (keysEnabled)
+            resetScreen();
+        reallyQuitMenu.SetActive(!reallyQuitMenu.activeSelf);
+        GamePause(reallyQuitMenu.activeSelf);
+        if (reallyQuitMenu.activeSelf)
+            keysEnabled = false;
+        else
+            keysEnabled = true;
+    }
+
+    private void resetScreen()
+    {
+        upgradeMenu.SetActive(false);
+    }
+
+    public void GamePause(bool pauseStatus)
     {
         onTogglePauseGame.Invoke(pauseStatus);
         if (pauseStatus)
@@ -75,11 +99,11 @@ public class GameMaster : MonoBehaviour
     }
     public IEnumerator _RespawnPlayer()
     {
-        keysEnabled = false;
+        disableUpgradeMenu = true;
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
         GameObject clone = Instantiate(spawnPrefab, spawnPoint.position, spawnPoint.rotation);
-        keysEnabled = true;
+        disableUpgradeMenu = false;
         Destroy(clone, 3f);
         soundManager.PlaySound("RespawnSound");
 

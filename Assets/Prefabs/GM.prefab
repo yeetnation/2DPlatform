@@ -96,6 +96,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   menuButton: {fileID: 0}
   upgradeMenu: {fileID: 0}
+  reallyQuitMenu: {fileID: 0}
   startingMoney: 200000
 --- !u!114 &114569472892899930
 MonoBehaviour:
@@ -121,9 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pistolDMG: 10
-  pistolFR: 0
   rifleDMG: 10
-  rifleFR: 10
+  rifleFR: 1
 --- !u!114 &114647364082434300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,10 +156,6 @@ MonoBehaviour:
   healthRegenRate: 2
   movementSpeed: 10
   jumpForce: 800
-  pistolDMG: 0
-  pistolFR: 0
-  rifleDMG: 0
-  rifleFR: 0
 --- !u!114 &114913590139592210
 MonoBehaviour:
   m_ObjectHideFlags: 1

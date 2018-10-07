@@ -61,11 +61,14 @@ public class GameMaster : MonoBehaviour
     private void Update()
     {
         //InputManager
-        for (int a = 0; a < inputManager.keyInput.Length; a++)
+        if(keysEnabled)
         {
-            if (Input.GetKeyDown(inputManager.keyInput[a]))
-                inputManager.inputHandling(inputManager.keyInput[a]);
+            for (int a = 0; a < inputManager.keyInput.Length; a++)
+            {
+                if (Input.GetKeyDown(inputManager.keyInput[a]))
+                    inputManager.inputHandling(inputManager.keyInput[a]);
 
+            }
         }
     }
 
@@ -82,11 +85,6 @@ public class GameMaster : MonoBehaviour
             */
     }
 
-    private void resetScreen()
-    {
-        upgradeMenu.SetActive(false);
-    }
-
     public void GamePause(bool pauseStatus)
     {
         onTogglePauseGame.Invoke(pauseStatus);
@@ -98,11 +96,13 @@ public class GameMaster : MonoBehaviour
 
     public void EndGame()
     {
+        keysEnabled = false;
         gameOverUI.SetActive(true);
         menuButton.SetActive(false);
     }
     public IEnumerator _RespawnPlayer()
     {
+        keysEnabled = false;
         disableUpgradeMenu = true;
         yield return new WaitForSeconds(spawnDelay);
         Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -110,6 +110,7 @@ public class GameMaster : MonoBehaviour
         disableUpgradeMenu = false;
         Destroy(clone, 3f);
         soundManager.PlaySound("RespawnSound");
+        keysEnabled = true;
 
     }
 

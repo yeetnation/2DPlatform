@@ -78,10 +78,10 @@ public class Player : MonoBehaviour
         // handle what happens when the upgrade menu is toggled
         if (this == null)
             return;
-        /*keysEnabled = !active;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        GetComponent<Platformer2DUserControl>().enabled = !active;
-        if (active == true)
+        keysEnabled = !active;
+        //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        //GetComponent<Platformer2DUserControl>().enabled = !active;
+        /*if (active == true)
         {
             previousForce = rb.velocity;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;

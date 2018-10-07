@@ -8,9 +8,11 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public string name;
         public Transform enemy;
+        public string name;
+        [HideInInspector]
         public int amount;
+        [HideInInspector]
         public float spawnRate;
     }
 

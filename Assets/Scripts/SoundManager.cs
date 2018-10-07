@@ -119,9 +119,19 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    public void ChangeVolume(float _volume)
+    public void ChangeMasterVolume(float _volume)
     {
-        audioMixer.SetFloat("volume", 20f * Mathf.Log10(_volume));
+        audioMixer.SetFloat("masterVol", 20f * Mathf.Log10(_volume));
+    }
+
+    public void ChangeMusicVolume(float _volume)
+    {
+        audioMixer.SetFloat("musicVol", 20f * Mathf.Log10(_volume));
+    }
+
+    public void ChangeSfxVolume(float _volume)
+    {
+        audioMixer.SetFloat("sfxVol", 20f * Mathf.Log10(_volume));
     }
 
     public void ChangeMusic(string _name)

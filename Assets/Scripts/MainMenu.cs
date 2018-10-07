@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour {
             Debug.LogError("No SoundManager found");
 
 
-        soundManager.ChangeVolume(1);
+        soundManager.ChangeMasterVolume(1);
         soundManager.ChangeMusic("MusicMenu");
     }
     // Use this for initialization

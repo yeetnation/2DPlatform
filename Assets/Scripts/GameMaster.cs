@@ -24,6 +24,13 @@ public class GameMaster : MonoBehaviour
     public GameObject spawnPrefab;
     public int spawnDelay = 2;
     public CameraShake cameraShake;
+
+    internal void upgradeMenuOpenClose()
+    {
+        upgradeMenu.SetActive(!upgradeMenu.activeSelf);
+        GamePause(upgradeMenu.activeSelf);
+    }
+
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject upgradeMenu;
@@ -31,6 +38,7 @@ public class GameMaster : MonoBehaviour
     public delegate void PauseGame(bool active);
     public PauseGame onTogglePauseGame;
     private SoundManager soundManager;
+    public InputManager inputManager;
 
     private bool disableUpgradeMenu = false;
     private bool keysEnabled = true;
@@ -52,30 +60,26 @@ public class GameMaster : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        //InputManager
+        for (int a = 0; a < inputManager.keyInput.Length; a++)
         {
-            noQuit();
-        }
-        if (keysEnabled)
-        {
-            if (Input.GetKeyDown(KeyCode.U) && !disableUpgradeMenu)
-            {
-                upgradeMenu.SetActive(!upgradeMenu.activeSelf);
-                GamePause(upgradeMenu.activeSelf);
-            }
+            if (Input.GetKeyDown(inputManager.keyInput[a]))
+                inputManager.inputHandling(inputManager.keyInput[a]);
+
         }
     }
 
     public void noQuit()
     {
-        if (keysEnabled)
-            resetScreen();
+        //if (keysEnabled)
+        //    resetScreen();
         reallyQuitMenu.SetActive(!reallyQuitMenu.activeSelf);
         GamePause(reallyQuitMenu.activeSelf);
-        if (reallyQuitMenu.activeSelf)
+        /*if (reallyQuitMenu.activeSelf)
             keysEnabled = false;
         else
             keysEnabled = true;
+            */
     }
 
     private void resetScreen()

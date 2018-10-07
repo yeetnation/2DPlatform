@@ -836,31 +836,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114569472892899930, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: mainCam
-      value: 
-      objectReference: {fileID: 151189481}
-    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: gameOverUI
-      value: 
-      objectReference: {fileID: 502412426}
-    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: menuButton
-      value: 
-      objectReference: {fileID: 713804942}
-    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: upgradeMenu
-      value: 
-      objectReference: {fileID: 525508277}
-    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: reallyQuitMenu
-      value: 
-      objectReference: {fileID: 188389171}
     - target: {fileID: 114647364082434300, guid: b45b5d91be124054abb9c373f18cb6ee,
         type: 2}
       propertyPath: backgrounds.Array.data[0]
@@ -881,6 +856,11 @@ Prefab:
       propertyPath: backgrounds.Array.data[3]
       value: 
       objectReference: {fileID: 1039230150}
+    - target: {fileID: 114569472892899930, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 151189481}
     - target: {fileID: 114913590139592210, guid: b45b5d91be124054abb9c373f18cb6ee,
         type: 2}
       propertyPath: spawnPoints.Array.data[0]
@@ -896,12 +876,27 @@ Prefab:
       propertyPath: spawnPoints.Array.data[2]
       value: 
       objectReference: {fileID: 621951468}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
+    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 502412426}
+    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: menuButton
+      value: 
+      objectReference: {fileID: 713804942}
+    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: upgradeMenu
+      value: 
+      objectReference: {fileID: 525508277}
+    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: reallyQuitMenu
+      value: 
+      objectReference: {fileID: 188389171}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b45b5d91be124054abb9c373f18cb6ee, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &405386013

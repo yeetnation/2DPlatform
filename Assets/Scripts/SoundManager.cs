@@ -1,6 +1,7 @@
 ﻿//using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 [System.Serializable]
@@ -52,11 +53,16 @@ public class Sound
 
 }
 
+[System.Serializable]
 public class SoundManager : MonoBehaviour
 {
 
     public static SoundManager instance;
     public AudioMixer audioMixer;
+
+    public float volMaster;
+    public float volMusic;
+    public float volSFX;
 
     [SerializeField]
     Sound[] sounds;
@@ -98,6 +104,11 @@ public class SoundManager : MonoBehaviour
         Debug.LogWarning("SoundManager: Sounds not found in list: " + _name);
     }
 
+    public void PlaySoundOneShot(string _name)
+    {
+        instance.PlaySound(_name);
+    }
+
     public void PlaySoundAtPoint(GameObject gObject, string _name)
     {
         gObject.AddComponent<AudioSource>();
@@ -121,16 +132,19 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeMasterVolume(float _volume)
     {
+        volMaster = _volume;
         audioMixer.SetFloat("masterVol", 20f * Mathf.Log10(_volume));
     }
 
     public void ChangeMusicVolume(float _volume)
     {
+        volMusic = _volume;
         audioMixer.SetFloat("musicVol", 20f * Mathf.Log10(_volume));
     }
 
     public void ChangeSfxVolume(float _volume)
     {
+        volSFX = _volume;
         audioMixer.SetFloat("sfxVol", 20f * Mathf.Log10(_volume));
     }
 
@@ -148,6 +162,55 @@ public class SoundManager : MonoBehaviour
         Debug.Log("No music was playing!");
         PlaySound(_name);
         return;
+    }
+
+    public void SaveAudioSettings()
+    {
+        PlayerPrefs.SetFloat("pVolMaster", volMaster);
+        PlayerPrefs.SetFloat("pVolMusic", volMusic);
+        PlayerPrefs.SetFloat("pVolSFX", volSFX);
+
+        Debug.Log("Saved Options");
+    }
+
+    public void LoadAudioSettings()
+    {
+        GameObject tempGO = new GameObject("TempSlider");
+
+        if (PlayerPrefs.HasKey("pVolMaster") == false)
+        {
+            PlayerPrefs.SetFloat("pVolMaster", 1);
+        }
+
+        if (PlayerPrefs.HasKey("pVolMusic") == false)
+        {
+            PlayerPrefs.SetFloat("pVolMusic", 1);
+        }
+
+        if (PlayerPrefs.HasKey("pVolSFX") == false)
+        {
+            PlayerPrefs.SetFloat("pVolSFX", 1);
+        }
+
+        volMaster = PlayerPrefs.GetFloat("pVolMaster");
+        volMusic = PlayerPrefs.GetFloat("pVolMusic");
+        volSFX = PlayerPrefs.GetFloat("pVolSFX");
+
+        if (GameObject.Find("SliderVolume") == false)
+        {
+            ChangeMasterVolume(volMaster);
+            ChangeSfxVolume(volSFX);
+            ChangeMusicVolume(volMusic);
+            return;
+        }
+
+        GameObject.Find("SliderVolume").GetComponent<Slider>().value = volMaster;
+        ChangeMasterVolume(volMaster);
+        GameObject.Find("SliderSFX").GetComponent<Slider>().value = volSFX;
+        ChangeSfxVolume(volSFX);
+        GameObject.Find("SliderMusic").GetComponent<Slider>().value = volMusic;
+        ChangeMusicVolume(volMusic);
+
     }
 
     private static AudioSource PlayClipAtPointCustom(AudioSource audioSource, Vector3 pos)

@@ -12,9 +12,10 @@ public class MainMenu : MonoBehaviour {
         if (soundManager == null)
             Debug.LogError("No SoundManager found");
 
-
-        soundManager.ChangeMasterVolume(1);
+        soundManager.LoadAudioSettings();
         soundManager.ChangeMusic("MusicMenu");
+        
+        
     }
     // Use this for initialization
     public void PlayGame()

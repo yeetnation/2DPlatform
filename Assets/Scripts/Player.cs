@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     SoundManager soundManager;
 
     [SerializeField] private StatusIndicator statusIndicator;
+    [SerializeField] private ExperienceStatusIndicator experienceStatusIndicator;
 
     private PlayerStats stats;
     public Weapon pistol;
@@ -25,12 +26,17 @@ public class Player : MonoBehaviour
     {
         stats = PlayerStats.instance;
         stats.curHealth = stats.maxHealth;
+
         if (statusIndicator == null)
             Debug.LogError(this);
         else
-        {
             statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
-        }
+
+        if (experienceStatusIndicator == null)
+            Debug.LogError(this);
+        else
+            experienceStatusIndicator.SetExperience(stats.curExperience, stats.maxExperience);
+
         GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
         soundManager = SoundManager.instance;
         if (soundManager == null)

@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     {
         public int maxHealth = 100;
 
+        public int expWorth = 10;
 
         private int _curHealth;
         public int curHealth
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
         }
     }
     public EnemyStats stats = new EnemyStats();
+    public EnemyStats playerStats;
 
     SoundManager soundManager;
 
@@ -80,7 +82,7 @@ public class Enemy : MonoBehaviour
         stats.curHealth -= (int)damage;
         if (stats.curHealth <= 0)
         {
-            GameMaster.KillEnemy(this);
+            GameMaster.KillEnemy(this,stats.expWorth);
             GameMaster.Money += stats.moneyWorth;
             soundManager.PlaySoundAtPoint(this.gameObject, "EnemyDeathSound");
         }

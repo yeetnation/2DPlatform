@@ -24,6 +24,7 @@ public class GameMaster : MonoBehaviour
     public GameObject spawnPrefab;
     public int spawnDelay = 2;
     public CameraShake cameraShake;
+    
 
     internal void upgradeMenuOpenClose()
     {
@@ -42,6 +43,8 @@ public class GameMaster : MonoBehaviour
 
     private bool disableUpgradeMenu = false;
     private bool keysEnabled = true;
+
+    [SerializeField] private ExperienceStatusIndicator experienceStatusIndicator;
 
     [SerializeField] private int startingMoney;
     public static int Money;
@@ -127,12 +130,14 @@ public class GameMaster : MonoBehaviour
             gm.StartCoroutine(gm._RespawnPlayer());
         }
     }
-    public static void KillEnemy(Enemy enemy)
+    public static void KillEnemy(Enemy enemy, int expWorth)
     {
+        PlayerStats.instance.curExperience += expWorth;
         gm._KillEnemy(enemy);
     }
     public void _KillEnemy(Enemy _enemy)
     {
+        experienceStatusIndicator.SetExperience(PlayerStats.instance.curExperience, PlayerStats.instance.maxExperience);
         Instantiate(_enemy.deathParticles, _enemy.transform.position, Quaternion.identity);
         cameraShake.Shake(_enemy.shakeAmt, _enemy.shakeLength);
         Destroy(_enemy.gameObject);

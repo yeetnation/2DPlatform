@@ -603,8 +603,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statusIndicator: {fileID: 114926408272736834}
-  pistol: {fileID: 4744152232216444}
-  rifle: {fileID: 4149696464250486}
+  experienceStatusIndicator: {fileID: 0}
+  pistol: {fileID: 0}
+  rifle: {fileID: 0}
 --- !u!114 &114687923893098422
 MonoBehaviour:
   m_ObjectHideFlags: 1

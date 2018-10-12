@@ -6,7 +6,7 @@ public class StatusIndicator : MonoBehaviour {
     [SerializeField] private RectTransform healthBarRect;
     [SerializeField] private Text healthText;
 
-    void Start()
+    void Start ()
     {
         if (healthBarRect == null)
         {
@@ -17,6 +17,7 @@ public class StatusIndicator : MonoBehaviour {
             Debug.LogError("STATUS INDICATOR: No health text object referenced");
         }
     }
+
     public void SetHealth(int _cur, int _max)
     {
         float _value = (float)_cur / _max;

@@ -132,12 +132,22 @@ public class GameMaster : MonoBehaviour
     }
     public static void KillEnemy(Enemy enemy, int expWorth)
     {
+        if (PlayerStats.instance.curExperience + expWorth >= PlayerStats.instance.neededExperience)
+        {
+            LevelUp();
+        }
         PlayerStats.instance.curExperience += expWorth;
         gm._KillEnemy(enemy);
     }
+
+    private static void LevelUp()
+    {
+        PlayerStats.instance.curlvl++;
+    }
+
     public void _KillEnemy(Enemy _enemy)
     {
-        experienceStatusIndicator.SetExperience(PlayerStats.instance.curExperience, PlayerStats.instance.maxExperience);
+        experienceStatusIndicator.SetExperience(PlayerStats.instance.curExperience, PlayerStats.instance.neededExperience);
         Instantiate(_enemy.deathParticles, _enemy.transform.position, Quaternion.identity);
         cameraShake.Shake(_enemy.shakeAmt, _enemy.shakeLength);
         Destroy(_enemy.gameObject);

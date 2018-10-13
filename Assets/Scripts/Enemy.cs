@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
     {
         public int maxHealth = 100;
 
-        public int expWorth = 10;
 
         private int _curHealth;
         public int curHealth
@@ -22,6 +21,7 @@ public class Enemy : MonoBehaviour
 
         public int damage = 40;
         public int moneyWorth = 20;
+        public int expWorth = 50;
 
 
         public void Init()

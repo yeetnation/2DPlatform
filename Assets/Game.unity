@@ -979,6 +979,11 @@ Prefab:
       propertyPath: experienceStatusIndicator
       value: 
       objectReference: {fileID: 1864469528}
+    - target: {fileID: 114862202115804518, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: maxExperience
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b45b5d91be124054abb9c373f18cb6ee, type: 2}
   m_IsPrefabParent: 0
@@ -1088,8 +1093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -801, y: 0}
-  m_SizeDelta: {x: 158, y: -555.7}
+  m_AnchoredPosition: {x: -1156.4, y: 15}
+  m_SizeDelta: {x: 233.2, y: -958.1}
   m_Pivot: {x: 0.5, y: 0.49999997}
 --- !u!114 &408587722
 MonoBehaviour:
@@ -4081,8 +4086,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -394, y: 0}
-  m_SizeDelta: {x: 158, y: -555.7}
+  m_AnchoredPosition: {x: -863.18, y: 15}
+  m_SizeDelta: {x: 233.2, y: -958.1}
   m_Pivot: {x: 0.072991736, y: 0.49999997}
 --- !u!114 &1125361063
 MonoBehaviour:
@@ -6622,7 +6627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expBarRect: {fileID: 908868841}
   expBarText: {fileID: 239437891}
-  expText: {fileID: 239437890}
 --- !u!114 &1864469529
 MonoBehaviour:
   m_ObjectHideFlags: 0

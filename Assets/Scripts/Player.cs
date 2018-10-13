@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
     private bool alive = true;
     private Camera mainCam;
-
     SoundManager soundManager;
 
     [SerializeField] private StatusIndicator statusIndicator;
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour
         if (experienceStatusIndicator == null)
             Debug.LogError(this);
         else
-            experienceStatusIndicator.SetExperience(stats.curExperience, stats.maxExperience);
+            experienceStatusIndicator.SetExperience(stats.curExperience, stats.neededExperience);
 
         GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
         soundManager = SoundManager.instance;

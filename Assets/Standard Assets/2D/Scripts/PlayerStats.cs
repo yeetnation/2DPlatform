@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [SerializeField]
 
 public class PlayerStats : MonoBehaviour
 {
-
     public static PlayerStats instance;
-
     public int maxHealth = 100;
     private int _curHealth = 0;
     public int curHealth
@@ -16,13 +15,32 @@ public class PlayerStats : MonoBehaviour
         get { return _curHealth; }
         set { _curHealth = Mathf.Clamp(value, 0, maxHealth); }
     }
-    public int maxExperience = 100;
+    public int neededExperience = 90;
+
     private int _curExperience;
     public int curExperience
     {
-        get { return _curExperience; }
-        set { _curExperience = Mathf.Clamp(value, 0, maxExperience); }
+        get { return _curExperience;}
+        set
+        {
+            _curExperience = value;
+
+            Debug.Log(_curExperience);
+            if (curExperience >= neededExperience)
+            {
+                _curExperience = _curExperience - neededExperience;
+            }
+        }
     }
+    
+
+    private int _curLvl = 1;
+    public int curlvl
+    {
+        get { return _curLvl; }
+        set { _curLvl = value; }
+    }
+
     public int healthRegenRate = 2;
 
     public float movementSpeed = 10f;

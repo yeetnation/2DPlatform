@@ -360,6 +360,13 @@ MonoBehaviour:
   stats:
     maxHealth: 100
     damage: 40
+    moneyWorth: 20
+    expWorth: 50
+  playerStats:
+    maxHealth: 100
+    damage: 40
+    moneyWorth: 20
+    expWorth: 10
   deathParticles: {fileID: 4098365786721114, guid: 4f1623f1f06a1054da54d46012d22f9e,
     type: 2}
   shakeAmt: 0.1

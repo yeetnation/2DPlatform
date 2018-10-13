@@ -97,7 +97,8 @@ public class Enemy : MonoBehaviour
         if (_player != null)
         {
             _player.DamagePlayer(stats.damage);
-            DamageEnemy(99999);
+            GameMaster.KillEnemy(this, 0);
+            soundManager.PlaySoundAtPoint(this.gameObject, "EnemyDeathSound");
         }
     }
     private void OnDestroy()

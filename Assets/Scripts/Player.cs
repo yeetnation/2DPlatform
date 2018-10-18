@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     private WeaponStats weaponstats;
     private bool keysEnabled = true;
+    public static bool shootingEnabled = true;
     Vector2 previousForce;
 
     void Start()
@@ -140,6 +141,11 @@ public class Player : MonoBehaviour
             pistol.gameObject.SetActive(false);
             rifle.gameObject.SetActive(true);
         }
+    }
+    public void enableShooting()
+    {
+        shootingEnabled = !shootingEnabled;
+        Debug.Log(shootingEnabled);
     }
     private void OnDestroy()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Weapon : MonoBehaviour {
 
@@ -44,23 +45,29 @@ public class Weapon : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        if (fireRate == 0)
+    void Update()
+    {
+        if (Player.shootingEnabled)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (fireRate == 0)
             {
-                Shoot();
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Shoot();
+                }
+            }
+            else
+            {
+                if (Input.GetKey(KeyCode.Mouse0) && Time.time > timeToFire)
+                {
+                    timeToFire = Time.time + 1 / fireRate;
+                    Shoot();
+                }
             }
         }
-        else
-        {
-            if (Input.GetKey(KeyCode.Mouse0) && Time.time > timeToFire)
-            {
-                timeToFire = Time.time + 1 / fireRate;
-                Shoot();
-            }
-        }
-	}
+    }
+
+
     void Shoot()
     {
         Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);

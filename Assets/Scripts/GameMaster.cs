@@ -48,6 +48,7 @@ public class GameMaster : MonoBehaviour
 
     [SerializeField] private int startingMoney;
     public static int Money;
+
     private void Start()
     {
         _remainingLives = maxLives;

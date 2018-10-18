@@ -52,6 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: a61053bc3b0abfb4aa5dcc355acd36ee, type: 2}
+  volMaster: 0.5461317
+  volMusic: 0.7821152
+  volSFX: 0.46233913
   sounds:
   - name: PlayerDeathSound
     clip: {fileID: 8300000, guid: 2c515a2b0290e94478bb9d181223a774, type: 3}
@@ -62,7 +65,7 @@ MonoBehaviour:
     randomPitch: 0.205
     loop: 0
   - name: EnemyDeathSound
-    clip: {fileID: 8300000, guid: f71c6cbc9ea1d2940952faa7a56062e6, type: 3}
+    clip: {fileID: 8300000, guid: 232075984fbc1714eb9fc32c85845233, type: 3}
     mixerGroup: Enemy
     volume: 0.7
     pitch: 1
@@ -70,7 +73,7 @@ MonoBehaviour:
     randomPitch: 0.5
     loop: 0
   - name: GunshotSound
-    clip: {fileID: 8300000, guid: f0c76674af6286d438801267e4b6278a, type: 3}
+    clip: {fileID: 8300000, guid: 8fb38152b3d8b3740ba49c1d7403a95c, type: 3}
     mixerGroup: Player
     volume: 0.3
     pitch: 1
@@ -94,7 +97,7 @@ MonoBehaviour:
     randomPitch: 0
     loop: 1
   - name: PlayerHitSound
-    clip: {fileID: 8300000, guid: e7cd353249af8e14c90bf7d3a7d88e87, type: 3}
+    clip: {fileID: 8300000, guid: a56db7bda08a296458a6841eff8a58c5, type: 3}
     mixerGroup: Player
     volume: 0.7
     pitch: 0.7
@@ -141,3 +144,11 @@ MonoBehaviour:
     randomVolume: 0
     randomPitch: 0
     loop: 1
+  - name: SavedOptions
+    clip: {fileID: 8300000, guid: bcb4ae6e7f2e80f44baec07afd95db08, type: 3}
+    mixerGroup: SFX
+    volume: 0.3
+    pitch: 1
+    randomVolume: 0
+    randomPitch: 0
+    loop: 0

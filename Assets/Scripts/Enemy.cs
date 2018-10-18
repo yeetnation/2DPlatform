@@ -82,8 +82,7 @@ public class Enemy : MonoBehaviour
         stats.curHealth -= (int)damage;
         if (stats.curHealth <= 0)
         {
-            GameMaster.KillEnemy(this,stats.expWorth);
-            GameMaster.Money += stats.moneyWorth;
+            GameMaster.KillEnemy(this,stats.expWorth, stats.moneyWorth);
             soundManager.PlaySoundAtPoint(this.gameObject, "EnemyDeathSound");
         }
         if (statusIndicator != null)
@@ -97,7 +96,7 @@ public class Enemy : MonoBehaviour
         if (_player != null)
         {
             _player.DamagePlayer(stats.damage);
-            GameMaster.KillEnemy(this, 0);
+            GameMaster.KillEnemy(this, 0,0);
             soundManager.PlaySoundAtPoint(this.gameObject, "EnemyDeathSound");
         }
     }

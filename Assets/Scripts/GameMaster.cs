@@ -31,7 +31,7 @@ public class GameMaster : MonoBehaviour
         upgradeMenu.SetActive(!upgradeMenu.activeSelf);
         GamePause(upgradeMenu.activeSelf);
     }
-
+    [SerializeField] private PlayerInfoUpdateUI playerInfoUpdateUI;
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject menuButton;
     [SerializeField] private GameObject upgradeMenu;
@@ -60,6 +60,8 @@ public class GameMaster : MonoBehaviour
         if (soundManager == null)
             Debug.LogError("No SoundManager found");
         soundManager.ChangeMusic("MusicHappy");
+
+        playerInfoUpdateUI.PlayerInfoUpdate();
     }
     private void Update()
     {
@@ -130,13 +132,14 @@ public class GameMaster : MonoBehaviour
             gm.StartCoroutine(gm._RespawnPlayer());
         }
     }
-    public static void KillEnemy(Enemy enemy, int expWorth)
+    public static void KillEnemy(Enemy enemy, int expWorth, int moneyWorth)
     {
         if (PlayerStats.instance.curExperience + expWorth >= PlayerStats.instance.neededExperience)
         {
             LevelUp();
         }
         PlayerStats.instance.curExperience += expWorth;
+        Money += moneyWorth;
         gm._KillEnemy(enemy);
     }
 
@@ -147,6 +150,7 @@ public class GameMaster : MonoBehaviour
 
     public void _KillEnemy(Enemy _enemy)
     {
+        playerInfoUpdateUI.PlayerInfoUpdate();
         experienceStatusIndicator.SetExperience(PlayerStats.instance.curExperience, PlayerStats.instance.neededExperience);
         Instantiate(_enemy.deathParticles, _enemy.transform.position, Quaternion.identity);
         cameraShake.Shake(_enemy.shakeAmt, _enemy.shakeLength);

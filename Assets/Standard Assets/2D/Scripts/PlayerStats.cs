@@ -24,8 +24,7 @@ public class PlayerStats : MonoBehaviour
         set
         {
             _curExperience = value;
-
-            Debug.Log(_curExperience);
+            
             if (curExperience >= neededExperience)
             {
                 _curExperience = _curExperience - neededExperience;

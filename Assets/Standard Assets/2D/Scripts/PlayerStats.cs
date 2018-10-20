@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
     }
     public int neededExperience = 90;
 
-    private int _curExperience;
+    private int _curExperience=0;
     public int curExperience
     {
         get { return _curExperience;}
@@ -51,7 +51,8 @@ public class PlayerStats : MonoBehaviour
         {
             instance = this;
         }
+        
     }
-    
+
 
 }

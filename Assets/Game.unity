@@ -1003,6 +1003,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114569472892899930, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 151189481}
     - target: {fileID: 114647364082434300, guid: b45b5d91be124054abb9c373f18cb6ee,
         type: 2}
       propertyPath: backgrounds.Array.data[0]
@@ -1023,11 +1028,6 @@ Prefab:
       propertyPath: backgrounds.Array.data[3]
       value: 
       objectReference: {fileID: 1039230150}
-    - target: {fileID: 114569472892899930, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: mainCam
-      value: 
-      objectReference: {fileID: 151189481}
     - target: {fileID: 114913590139592210, guid: b45b5d91be124054abb9c373f18cb6ee,
         type: 2}
       propertyPath: spawnPoints.Array.data[0]
@@ -1043,6 +1043,11 @@ Prefab:
       propertyPath: spawnPoints.Array.data[2]
       value: 
       objectReference: {fileID: 621951468}
+    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
+        type: 2}
+      propertyPath: playerInfoUpdateUI
+      value: 
+      objectReference: {fileID: 1654838201}
     - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
         type: 2}
       propertyPath: gameOverUI
@@ -1068,16 +1073,6 @@ Prefab:
       propertyPath: experienceStatusIndicator
       value: 
       objectReference: {fileID: 1864469528}
-    - target: {fileID: 114862202115804518, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: maxExperience
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 114207854285226742, guid: b45b5d91be124054abb9c373f18cb6ee,
-        type: 2}
-      propertyPath: playerInfoUpdateUI
-      value: 
-      objectReference: {fileID: 1654838201}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b45b5d91be124054abb9c373f18cb6ee, type: 2}
   m_IsPrefabParent: 0
@@ -5642,11 +5637,6 @@ Prefab:
       propertyPath: experienceStatusIndicator
       value: 
       objectReference: {fileID: 1864469528}
-    - target: {fileID: 224835031004380814, guid: 25f1f165806accc4085253de7135f952,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0.0000019073
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f1f165806accc4085253de7135f952, type: 2}
   m_IsPrefabParent: 0
@@ -7157,7 +7147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecdb25c7b9a0ee247be4c3637350b77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyText: {fileID: 0}
 --- !u!1 &1918655830
 GameObject:
   m_ObjectHideFlags: 0

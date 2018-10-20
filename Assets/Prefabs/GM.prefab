@@ -94,11 +94,13 @@ MonoBehaviour:
     type: 2}
   spawnDelay: 2
   cameraShake: {fileID: 114569472892899930}
+  playerInfoUpdateUI: {fileID: 0}
   gameOverUI: {fileID: 0}
   menuButton: {fileID: 0}
   upgradeMenu: {fileID: 0}
   reallyQuitMenu: {fileID: 0}
   inputManager: {fileID: 114449358086955494}
+  experienceStatusIndicator: {fileID: 0}
   startingMoney: 200000
 --- !u!114 &114449358086955494
 MonoBehaviour:
@@ -167,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  neededExperience: 90
   healthRegenRate: 2
   movementSpeed: 10
   jumpForce: 800
@@ -182,8 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-    name: 'Enemy Invasion: 1'
     enemy: {fileID: 4502030780250728, guid: d4ddc187e071e504c96c67d1127c820f, type: 2}
+    name: 'Enemy Invasion: 1'
     amount: 3
     spawnRate: 0.5
   spawnPoints:

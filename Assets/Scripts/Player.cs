@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     SoundManager soundManager;
 
     [SerializeField] private StatusIndicator statusIndicator;
-    [SerializeField] private ExperienceStatusIndicator experienceStatusIndicator;
 
     private PlayerStats stats;
     public Weapon pistol;
@@ -31,11 +30,6 @@ public class Player : MonoBehaviour
             Debug.LogError(this);
         else
             statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
-
-        if (experienceStatusIndicator == null)
-            Debug.LogError(this);
-        else
-            experienceStatusIndicator.SetExperience(stats.curExperience, stats.neededExperience);
 
         GameMaster.gm.onTogglePauseGame += OnPauseGameToggle;
         soundManager = SoundManager.instance;
@@ -145,7 +139,6 @@ public class Player : MonoBehaviour
     public void enableShooting()
     {
         shootingEnabled = !shootingEnabled;
-        Debug.Log(shootingEnabled);
     }
     private void OnDestroy()
     {

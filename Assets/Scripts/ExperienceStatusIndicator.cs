@@ -16,8 +16,10 @@ public class ExperienceStatusIndicator : MonoBehaviour {
         {
             Debug.LogError("STATUS INDICATOR: No experience text object referenced");
         }
+        SetExperience(PlayerStats.instance.curExperience, PlayerStats.instance.neededExperience);
+        
     }
-    
+
     public void SetExperience(int _cur, int _max)
     {
         float _value = (float)_cur / _max;
